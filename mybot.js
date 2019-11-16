@@ -69,11 +69,10 @@ async function onMessage(msg) {
     && msg.type() !== Message.Type.Attachment 
     && msg.type() !== Message.Type.Video 
     && msg.type() !== Message.Type.Url 
-    && msg.type() !== Message.Type.Unknown 
     && msg.type() !== Message.Type.Audio 
     && msg.type() !== Message.Type.Contact 
     ) {
-      bot.say(msg.from() + 'sent a non-text info from ' + topic)
+      bot.say(msg.from().name() + ' sent a non-text info from ' + topic)
       const file = await msg.toFileBox()
       bot.say(file)
     }
