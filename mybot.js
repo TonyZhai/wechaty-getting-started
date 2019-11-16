@@ -45,7 +45,7 @@ function onError(e) {
 }
 
 async function onMessage(msg) {
-  console.log(`RECV: ${msg}`)
+  // console.log(`RECV: ${msg}`)
 
   // if (msg.type() !== Message.Type.Text) {
   //   const file = await msg.toFileBox()
@@ -57,5 +57,9 @@ async function onMessage(msg) {
   if (room) {
     const topic = await room.topic()
     console.log(`room topic is : ${topic}`)
+    if (topic.indexOf('大山白') != -1 && msg.type() !== Message.Type.Image) {
+      console.log('find image from: ' + topic)
+      bot.say(msg)
+    }
   }
 }
