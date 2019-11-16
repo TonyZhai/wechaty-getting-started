@@ -53,13 +53,16 @@ async function onMessage(msg) {
   //   console.log('Save file to: ' + name)
   //   file.toFile(name)
   // }
+  if (await msg.mentionSelf()) {
+    bot.say(msg.from() + ' mentioned you')
+  }
   const room = msg.room()
   if (room) {
     const topic = await room.topic()
-    console.log(`room topic is : ${topic}`)
-    if (topic.indexOf('大山白') != -1 && msg.type() !== Message.Type.Image) {
+    // console.log(`room topic is : ${topic}`)
+    if (topic.indexOf('大山白') != -1 && msg.type() == Message.Type.Image) {
       console.log('find image from: ' + topic)
-      bot.say(msg)
+      bot.say('find image from dashan qun')
     }
   }
 }
