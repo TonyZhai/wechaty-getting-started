@@ -60,9 +60,9 @@ async function onMessage(msg) {
   if (room) {
     const topic = await room.topic()
     // console.log(`room topic is : ${topic}`)
-    if (topic.indexOf('大山白') != -1 && msg.type() == Message.Type.Image) {
-      console.log('find image from: ' + topic)
-      bot.say('find image from dashan qun')
+    if (topic.indexOf('大山白') != -1 && msg.type() !== Message.Type.Text) {
+      console.log('find non-text info from: ' + topic + ', the type is: )' + msg.type())
+      bot.say('find non-text info from ' + topic + ' qun')
     }
   }
 }
