@@ -53,10 +53,12 @@ async function onMessage(msg) {
   //   console.log('Save file to: ' + name)
   //   file.toFile(name)
   // }
-  if (await msg.mentionSelf()) {
-    bot.say(msg.from() + ' mentioned you')
-  }
+
   const room = msg.room()
+
+  if (await msg.mentionSelf()) {
+    bot.say(msg.from() + ' mentioned you from: ' + topic)
+  }
   if (room) {
     const topic = await room.topic()
     // console.log(`room topic is : ${topic}`)
