@@ -58,9 +58,9 @@ async function onMessage(msg) {
 
   if (room) {
 
-    if (await msg.mentionSelf()) {
-      bot.say(msg.from() + ' mentioned you from: ' + topic)
-    }
+    // if (await msg.mentionSelf()) {
+    //   bot.say(msg.from() + ' mentioned you from: ' + topic)
+    // }
 
     const topic = await room.topic()
     // console.log(`room topic is : ${topic}`)
