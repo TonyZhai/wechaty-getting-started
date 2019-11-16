@@ -64,9 +64,18 @@ async function onMessage(msg) {
 
     const topic = await room.topic()
     // console.log(`room topic is : ${topic}`)
-    if (topic.indexOf('大山白') != -1 && msg.type() !== Message.Type.Text) {
-      console.log('find non-text info from: ' + topic + ', the type is: )' + msg.type())
-      bot.say('find non-text info from ' + topic + ' qun')
+    if (topic.indexOf('大山白') != -1 
+    && msg.type() !== Message.Type.Text 
+    && msg.type() !== Message.Type.Attachment 
+    && msg.type() !== Message.Type.Video 
+    && msg.type() !== Message.Type.Url 
+    && msg.type() !== Message.Type.Unknown 
+    && msg.type() !== Message.Type.Audio 
+    && msg.type() !== Message.Type.Contact 
+    ) {
+      bot.say(msg.from() + 'sent a non-text info from ' + topic)
+      const file = await msg.toFileBox()
+      bot.say(file)
     }
   }
 }
