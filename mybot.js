@@ -56,10 +56,12 @@ async function onMessage(msg) {
 
   const room = msg.room()
 
-  if (await msg.mentionSelf()) {
-    bot.say(msg.from() + ' mentioned you from: ' + topic)
-  }
   if (room) {
+
+    if (await msg.mentionSelf()) {
+      bot.say(msg.from() + ' mentioned you from: ' + topic)
+    }
+
     const topic = await room.topic()
     // console.log(`room topic is : ${topic}`)
     if (topic.indexOf('大山白') != -1 && msg.type() !== Message.Type.Text) {
