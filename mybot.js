@@ -53,7 +53,7 @@ async function onMessage(msg) {
   //   console.log('Save file to: ' + name)
   //   file.toFile(name)
   // }
-  const room = m.room()
+  const room = msg.room()
   if (room) {
     const topic = await room.topic()
     console.log(`room topic is : ${topic}`)
